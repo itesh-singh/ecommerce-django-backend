@@ -8,6 +8,8 @@ media
 static/images/
 static/admin/
 staticfiles/
+*.json
+neon_seed.json
 
 # Backup files # 
 *.bak 
