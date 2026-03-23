@@ -4,7 +4,6 @@
 *.pyc
 __pycache__
 db.sqlite3
-media
 static/images/
 static/admin/
 staticfiles/
@@ -148,3 +147,12 @@ GitHub.sublime-settings
 data.json
 db.sqlite3.backup
 dump_error.log
+
+media/*
+!media/photos/
+media/photos/*
+!media/photos/products/
+media/photos/products/*
+!media/photos/products/*.jpeg
+!media/photos/products/*.jpg
+!media/photos/products/*.png
