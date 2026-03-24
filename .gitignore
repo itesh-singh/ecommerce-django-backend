@@ -156,3 +156,7 @@ media/photos/products/*
 !media/photos/products/*.jpeg
 !media/photos/products/*.jpg
 !media/photos/products/*.png
+
+token.json
+credentials.json
+gmail_auth.py

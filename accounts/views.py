@@ -1,9 +1,9 @@
+import os
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import RegistrationForm, UserForm, UserProfileForm
 from .models import Account, UserProfile
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
 from orders.models import Order, OrderProduct
 
 # Security verification
@@ -19,13 +19,17 @@ from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import default_token_generator
-from django.core.mail import EmailMessage
+from gmail_service import send_gmail_email
 
 from carts.views import _cart_id
 from carts.models import Cart, CartItem
 import requests
 
 # Create your views here.
+
+def send_verification_email(subject, html_message, to_email):
+    send_gmail_email(to_email, subject, html_message)
+
 
 def register(request):
     if request.method == 'POST':
@@ -57,8 +61,7 @@ def register(request):
                 'token': default_token_generator.make_token(user),
             })
             to_email = email
-            send_email = EmailMessage(mail_subject, message, to=[to_email])
-            send_email.send()
+            send_verification_email(mail_subject, message, to_email)
             # messages.success(request, 'Thank you for registering with us. We have sent you a verification email address [khoyalitesh68@gmail.com]. Please verify it.')
             return redirect('/accounts/login/?command=verification&email='+email)
     else:
@@ -185,9 +188,7 @@ def forgotPassword(request):
                 'token': default_token_generator.make_token(user),
             })
             to_email = email
-            send_email = EmailMessage(mail_subject, message, to=[to_email])
-            send_email.send()
-
+            send_verification_email(mail_subject, message, to_email)
             messages.success(request, 'Password reset email has been sent to your email address.')
             return redirect('login')
         else:
