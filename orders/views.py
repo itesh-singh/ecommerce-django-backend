@@ -9,9 +9,9 @@ import json
 from django.db import transaction, IntegrityError
 from django.contrib.auth.decorators import login_required
 from store.models import Product
-from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.utils import timezone
+from gmail_service import send_gmail_email
 
 
 
@@ -81,9 +81,9 @@ def payments(request):
     # clear cart
     CartItem.objects.filter(user=request.user).delete()
 
-    # send order recieved email to customer
-    mail_subject = 'Thank you for order!'
-    message = render_to_string('orders/order_received_email.html',{
+    # send order received email to customer
+    mail_subject = 'Thank you for your order!'
+    message = render_to_string('orders/order_received_email.html', {
         'user': request.user,
         'order': order,
         'payment': payment,
@@ -91,9 +91,7 @@ def payments(request):
     })
     to_email = request.user.email
 
-    send_email = EmailMessage(mail_subject, message, to=[to_email])
-    send_email.content_subtype = "html" 
-    send_email.send()    
+    send_gmail_email(to_email, mail_subject, message)    
 
     # send order number and transaction id back to sendData method via JsonResponse
     data = {
