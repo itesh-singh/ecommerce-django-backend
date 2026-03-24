@@ -50,7 +50,11 @@
                     <figure class="itemside align-items-center">
                       <div class="aside">
                         {% if cart_item.product.images %}
-                            <img src="{{ cart_item.product.images.url }}" class="img-sm" />
+                            <div class="aside">
+                              {% if cart_item.product.images %}
+                                  <img src="{{ cart_item.product.images.url }}" class="img-sm">
+                              {% endif %}
+                          </div>
                         {% else %}
                             <img src="{% static 'images/default-product.png' %}" class="img-sm" />
                         {% endif %}
@@ -136,7 +140,6 @@
 
 <script src="https://www.paypal.com/sdk/js?client-id={{ client_id }}&currency=USD"></script>
 <script>
-
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -156,11 +159,10 @@ var amount = "{{ grand_total }}";
 var url = "{% url 'payments' %}";
 var csrftoken = getCookie('csrftoken');
 var orderID = "{{ order.order_number }}";
-var payment_method = 'PayPal';
+var payment_method = "PayPal";
 var redirect_url = "{% url 'order_complete' %}";
 
 paypal.Buttons({
-
     style: {
         color: 'blue',
         shape: 'rect',
@@ -171,15 +173,16 @@ paypal.Buttons({
     createOrder: function(data, actions) {
         return actions.order.create({
             purchase_units: [{
-                amount: { value: amount }
+                amount: {
+                    value: amount
+                }
             }]
         });
     },
 
     onApprove: function(data, actions) {
         return actions.order.capture().then(function(details) {
-
-            fetch(url, {
+            return fetch(url, {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json",
@@ -199,18 +202,18 @@ paypal.Buttons({
                 return response.json();
             })
             .then((data) => {
-                window.location.href = redirect_url + '?order_number=' + data.order_number + '&payment_id=' + data.transID;
+                window.location.href =
+                    redirect_url +
+                    '?order_number=' + data.order_number +
+                    '&payment_id=' + data.transID;
             })
             .catch((error) => {
                 console.error(error);
-                alert("Payment succeeded but order failed. Contact support.");
+                alert("Payment was captured, but order finalization failed. Please contact support.");
             });
-
         });
     }
-
 }).render('#paypal-button-container');
-
 </script>
 
 {% endblock %}
