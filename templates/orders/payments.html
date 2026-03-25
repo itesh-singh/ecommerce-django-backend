@@ -1,12 +1,12 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
 
+{% block content %}
 <section class="section-content padding-y bg">
   <div class="container">
     <h4 class="text-center mb-10">Review Your Order and Make Payment</h4>
     <div class="row">
-      <!-- ========== LEFT COLUMN - ORDER DETAILS ========== -->
       <aside class="col-lg-8">
-        <!-- Billing Address Card -->
         <div class="card">
           <h5 class="card-header">Billing Address</h5>
           <div class="card-body">
@@ -17,21 +17,18 @@
             <p class="card-text mb-0">{{ order.email }}</p>
             <p class="card-text mb-0">{{ order.phone }}</p>
             {% if order.order_note %}
-            <b>Order Note: </b> {{ order.order_note }} {% endif %}
+              <b>Order Note:</b> {{ order.order_note }}
+            {% endif %}
           </div>
         </div>
-        <!-- Billing Address Card END -->
 
-        <!-- Payment Method Card -->
         <div class="card">
           <h5 class="card-header">Payment Method</h5>
           <div class="card-body">
             <p class="card-text">PayPal</p>
           </div>
         </div>
-        <!-- Payment Method Card END -->
 
-        <!-- Review Products Card -->
         <div class="card">
           <h5 class="card-header">Review Products</h5>
           <div class="card-body">
@@ -50,40 +47,33 @@
                     <figure class="itemside align-items-center">
                       <div class="aside">
                         {% if cart_item.product.images %}
-                            <div class="aside">
-                              {% if cart_item.product.images %}
-                                  <img src="{{ cart_item.product.images.url }}" class="img-sm">
-                              {% endif %}
-                          </div>
+                          <img src="{{ cart_item.product.images.url }}" class="img-sm" alt="{{ cart_item.product.product_name }}">
                         {% else %}
-                            <img src="{% static 'images/default-product.png' %}" class="img-sm" />
+                          <img src="{% static 'images/default-product.png' %}" class="img-sm" alt="Default product image">
                         {% endif %}
                       </div>
+
                       <figcaption class="info">
-                        <a
-                          href="{{ cart_item.product.get_url }}"
-                          class="title text-dark"
-                          >{{ cart_item.product.product_name }}</a
-                        >
+                        <a href="{{ cart_item.product.get_url }}" class="title text-dark">
+                          {{ cart_item.product.product_name }}
+                        </a>
                         <p class="text-muted small">
-                          {% if cart_item.variations.all %} {% for item in
-                          cart_item.variations.all %} {{ item.variation_category
-                          | capfirst }} : {{ item.variation_value | capfirst }}
-                          <br />
-                          {% endfor %} {% endif %}
+                          {% if cart_item.variations.all %}
+                            {% for item in cart_item.variations.all %}
+                              {{ item.variation_category|capfirst }} : {{ item.variation_value|capfirst }}<br>
+                            {% endfor %}
+                          {% endif %}
                         </p>
                       </figcaption>
                     </figure>
                   </td>
                   <td>
-                    <label for="">{{ cart_item.quantity }}</label>
+                    <label>{{ cart_item.quantity }}</label>
                   </td>
                   <td>
                     <div class="price-wrap">
                       <var class="price">${{ cart_item.sub_total }}</var>
-                      <small class="text-muted">
-                        {{ cart_item.product.price }} each
-                      </small>
+                      <small class="text-muted">{{ cart_item.product.price }} each</small>
                     </div>
                   </td>
                 </tr>
@@ -92,15 +82,11 @@
             </table>
           </div>
         </div>
-        <!-- Review Products Card END -->
       </aside>
-      <!-- LEFT COLUMN END -->
 
-      <!-- ========== RIGHT COLUMN - ORDER SUMMARY ========== -->
       <aside class="col-lg-4">
         <div class="card">
           <div class="card-body">
-            <!-- Price Breakdown -->
             <dl class="dlist-align">
               <dt>Total price:</dt>
               <dd class="text-right">${{ total }}</dd>
@@ -115,105 +101,96 @@
                 <strong>${{ grand_total }}</strong>
               </dd>
             </dl>
-            <!-- Price Breakdown END -->
 
-            <hr />
+            <hr>
 
-            <!-- Payment Icons -->
             <p class="text-center mb-3">
-              <img src="{% static 'images/misc/payments.png' %}" height="26" />
+              <img src="{% static 'images/misc/payments.png' %}" height="26" alt="Payment methods">
             </p>
-            <!-- Payment Icons END -->
 
-            <!-- Make Payment Button -->
-
-            <div id="paypal-button-container">
-              <!-- PayPal button will load -->
-            </div>
+            <div id="paypal-button-container"></div>
           </div>
         </div>
       </aside>
-      <!-- RIGHT COLUMN END -->
     </div>
   </div>
 </section>
 
 <script src="https://www.paypal.com/sdk/js?client-id={{ client_id }}&currency=USD"></script>
 <script>
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
+  function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          const cookies = document.cookie.split(';');
+          for (let i = 0; i < cookies.length; i++) {
+              const cookie = cookies[i].trim();
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+          }
+      }
+      return cookieValue;
+  }
 
-var amount = "{{ grand_total }}";
-var url = "{% url 'payments' %}";
-var csrftoken = getCookie('csrftoken');
-var orderID = "{{ order.order_number }}";
-var payment_method = "PayPal";
-var redirect_url = "{% url 'order_complete' %}";
+  const amount = "{{ grand_total }}";
+  const url = "{% url 'payments' %}";
+  const csrftoken = getCookie('csrftoken');
+  const orderID = "{{ order.order_number }}";
+  const payment_method = "PayPal";
+  const redirect_url = "{% url 'order_complete' %}";
 
-paypal.Buttons({
-    style: {
-        color: 'blue',
-        shape: 'rect',
-        height: 40,
-        label: 'pay'
-    },
+  paypal.Buttons({
+      style: {
+          color: 'blue',
+          shape: 'rect',
+          height: 40,
+          label: 'pay'
+      },
 
-    createOrder: function(data, actions) {
-        return actions.order.create({
-            purchase_units: [{
-                amount: {
-                    value: amount
-                }
-            }]
-        });
-    },
+      createOrder: function(data, actions) {
+          return actions.order.create({
+              purchase_units: [{
+                  amount: {
+                      value: amount
+                  }
+              }]
+          });
+      },
 
-    onApprove: function(data, actions) {
-        return actions.order.capture().then(function(details) {
-            return fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-type": "application/json",
-                    "X-CSRFToken": csrftoken,
-                },
-                body: JSON.stringify({
-                    orderID: orderID,
-                    transID: details.id,
-                    payment_method: payment_method,
-                    status: details.status,
-                }),
-            })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error("Payment processing failed");
-                }
-                return response.json();
-            })
-            .then((data) => {
-                window.location.href =
-                    redirect_url +
-                    '?order_number=' + data.order_number +
-                    '&payment_id=' + data.transID;
-            })
-            .catch((error) => {
-                console.error(error);
-                alert("Payment was captured, but order finalization failed. Please contact support.");
-            });
-        });
-    }
-}).render('#paypal-button-container');
+      onApprove: function(data, actions) {
+          return actions.order.capture().then(function(details) {
+              return fetch(url, {
+                  method: "POST",
+                  headers: {
+                      "Content-type": "application/json",
+                      "X-CSRFToken": csrftoken,
+                  },
+                  body: JSON.stringify({
+                      orderID: orderID,
+                      transID: details.id,
+                      payment_method: payment_method,
+                      status: details.status,
+                  }),
+              })
+              .then((response) => {
+                  if (!response.ok) {
+                      throw new Error("Payment processing failed");
+                  }
+                  return response.json();
+              })
+              .then((data) => {
+                  window.location.href =
+                      redirect_url +
+                      '?order_number=' + data.order_number +
+                      '&payment_id=' + data.transID;
+              })
+              .catch((error) => {
+                  console.error(error);
+                  alert("Payment was captured, but order finalization failed. Please contact support.");
+              });
+          });
+      }
+  }).render('#paypal-button-container');
 </script>
-
 {% endblock %}
