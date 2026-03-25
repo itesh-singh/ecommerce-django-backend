@@ -35,14 +35,17 @@
 
 							{% if userprofile.profile_picture and userprofile.profile_picture.url %}
 								<img src="{{ userprofile.profile_picture.url }}"
+									onerror="this.onerror=null;this.src='{% static 'images/default-profile.jpg' %}';"
 									class="rounded-circle mb-3"
 									width="90" height="90"
-									style="object-fit: cover; object-position: top;">
+									style="object-fit: cover; object-position: top;"
+									alt="Profile Image">
 							{% else %}
-								<img src="{% static 'images/default-profile.png' %}"
+								<img src="{% static 'images/default-profile.jpg' %}"
 									class="rounded-circle mb-3"
 									width="90" height="90"
-									style="object-fit: cover; object-position: top;">
+									style="object-fit: cover; object-position: top;"
+									alt="Default Profile Image">
 							{% endif %}
 							<p class="mb-0">{{ user.email }}</p>
 							<p class="mb-0">{{ user.phone_number }}</p>
