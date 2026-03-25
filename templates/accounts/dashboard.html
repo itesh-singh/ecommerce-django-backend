@@ -33,7 +33,7 @@
 					<div class="card w-100 text-center">
 						<div class="card-body">
 
-							{% if userprofile.profile_picture %}
+							{% if userprofile.profile_picture and userprofile.profile_picture.url %}
 								<img src="{{ userprofile.profile_picture.url }}"
 									class="rounded-circle mb-3"
 									width="90" height="90"
