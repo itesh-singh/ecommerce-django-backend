@@ -1,8 +1,16 @@
 <div align="center">
 
-# 🛒 GreatKart — Django Ecommerce Platform
+# 🛒 GreatKart — Production-Oriented Django Ecommerce Platform
 
-<img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=24&pause=1000&color=2563EB&center=true&vCenter=true&width=700&lines=Production-ready+Django+Ecommerce+Project;Authentication%2C+Cart%2C+Checkout%2C+PayPal+Integration;PostgreSQL+Powered+and+Deployed+on+Render" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=24&pause=1000&color=2563EB&center=true&vCenter=true&width=900&lines=Production-Oriented+Django+Ecommerce+Project;Authentication%2C+Cart%2C+Checkout%2C+PayPal+Integration;PostgreSQL+Powered+and+Deployed+on+Render" alt="Typing SVG" />
+
+<p>
+  <strong>A backend-focused ecommerce project built with Django, PostgreSQL, PayPal Sandbox, and Render deployment.</strong>
+</p>
+
+<p>
+  This project demonstrates a complete ecommerce workflow including authentication, product browsing, cart and checkout, payment handling, order history, profile management, reviews, and production-style deployment.
+</p>
 
 <br>
 
@@ -19,72 +27,74 @@
 
 ## 🚀 Live Demo
 
-🔗 **Live Project:**  
+**Live Project:**  
 [https://ecommerce-django-backend-xnws.onrender.com](https://ecommerce-django-backend-xnws.onrender.com)
 
 ---
 
 ## 📌 Project Overview
 
-GreatKart is a full-featured Django ecommerce project built to demonstrate real backend development skills through a complete shopping workflow.
+GreatKart is a production-oriented Django ecommerce application built to demonstrate practical backend development through a real purchase lifecycle.
 
-This project covers:
+It covers the full customer journey:
 
-- user authentication and account management
-- product catalog and category browsing
-- product detail pages with ratings and reviews
-- cart and checkout flow
+- user registration and login
+- forgot password and password reset flow
+- product browsing and category filtering
+- product detail pages with reviews and ratings
+- cart and checkout workflow
 - PayPal Sandbox payment integration
-- order success, order detail, and order history
-- profile management and password change
-- forgot password flow
-- PostgreSQL database integration
-- live deployment on Render
+- payment success and invoice-like order detail pages
+- order history tracking
+- profile editing and password management
+- live deployment on Render with PostgreSQL
 
-The UI is kept simple and practical, while the core focus stays on backend logic, data flow, and real ecommerce functionality.
+The frontend is intentionally simple and usable, while the main focus remains on backend flow, business logic, and production-style project structure.
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
 ### 🔐 Authentication & Account Management
 - User registration
 - User login and logout
-- Forgot password page
-- Password reset flow
+- Forgot password flow
+- Password reset support
 - Change password page
 - User dashboard
 - Edit profile page
 - Profile image fallback handling
 
-### 🛍️ Store & Product Features
+### 🛍️ Store & Product Experience
 - Homepage with featured products
 - Store listing page
-- Category-based browsing
-- Product detail page
-- Product review and rating system
-- Color and size selection
+- Category-based filtering
+- Product detail pages
+- Product reviews and star ratings
+- Product variations such as color and size
 
 ### 🛒 Cart & Checkout
 - Add to cart
 - Update quantity
 - Remove items from cart
+- Cart total and tax calculation
 - Billing address form
 - Checkout summary
-- Order review before payment
+- Review order before payment
 
-### 💳 Payment & Orders
-- PayPal Sandbox integration
+### 💳 Payments & Orders
+- PayPal Sandbox payment integration
 - Payment success page
-- Order detail / invoice page
-- My Orders history page
+- Order detail / invoice view
+- My Orders page with order history
 
-### 🧠 Backend Highlights
+### 🛡️ Backend & Security Highlights
 - Modular Django app structure
+- PostgreSQL-backed data storage
 - Environment-based configuration
-- PostgreSQL integration
-- Media fallback handling for free hosting limitations
-- Real deployed ecommerce flow
+- Admin honeypot protection
+- Media fallback handling for free-hosting limitations
+- Render deployment workflow
 
 ---
 
@@ -113,9 +123,9 @@ ecommerce-django-backend/
 ├── store/            # Products, reviews, product detail
 ├── carts/            # Cart operations and quantity logic
 ├── category/         # Product categories
-├── orders/           # Checkout, payment, order flow
+├── orders/           # Checkout, payment, and order flow
 ├── templates/        # Django templates
-├── static/           # CSS, JS, images
+├── static/           # CSS, JS, and images
 ├── screenshots/      # README screenshots
 └── manage.py
 ```
@@ -131,16 +141,16 @@ ecommerce-django-backend/
 ### 🛍️ Store Page
 ![Store](screenshots/store.png)
 
-### 📦 Product Detail Page
+### 📦 Product Detail
 ![Product Detail](screenshots/product_detail.png)
 
-### ⭐ Reviews Section
+### ⭐ Review Section
 ![Review Section](screenshots/review_section.png)
 
-### 🛒 Cart Page
+### 🛒 Cart
 ![Cart](screenshots/cart.png)
 
-### 🧾 Checkout Page
+### 🧾 Checkout
 ![Checkout](screenshots/checkout.png)
 
 ### ✅ Review Order & Payment
@@ -158,7 +168,7 @@ ecommerce-django-backend/
 ### 📜 My Orders
 ![My Orders](screenshots/my_orders.png)
 
-### 🧾 Order Detail / Invoice
+### 🧾 Order Detail
 ![Order Detail](screenshots/order_detail.png)
 
 ### ✏️ Edit Profile
@@ -167,10 +177,10 @@ ecommerce-django-backend/
 ### 🔒 Change Password
 ![Change Password](screenshots/change_password.png)
 
-### 🔑 Login Page
+### 🔑 Login
 ![Login](screenshots/login.png)
 
-### 📝 Register Page
+### 📝 Register
 ![Register](screenshots/register.png)
 
 ### ❓ Forgot Password
@@ -203,9 +213,10 @@ pip install -r requirements.txt
 ```
 
 ### 4. Configure environment variables
-Create a `.env` file and add your required environment variables.
+Create a `.env` file and add the required values.
 
 Example:
+
 ```env
 SECRET_KEY=your_secret_key
 DEBUG=True
@@ -216,6 +227,11 @@ DB_USER=your_db_user
 DB_PASSWORD=your_db_password
 DB_HOST=localhost
 DB_PORT=5432
+
+GMAIL_CLIENT_ID=your_gmail_client_id
+GMAIL_CLIENT_SECRET=your_gmail_client_secret
+GMAIL_REFRESH_TOKEN=your_gmail_refresh_token
+GMAIL_SENDER_EMAIL=your_sender_email
 ```
 
 ### 5. Apply migrations
@@ -234,35 +250,35 @@ python manage.py runserver
 ```
 
 Open in browser:
+
 ```text
 http://127.0.0.1:8000/
 ```
 
 ---
 
-## 🔐 Notes
+## 🔐 Important Notes
 
 - This project uses **PayPal Sandbox** for payment testing.
 - The project is configured with **PostgreSQL**.
-- On free hosting platforms like Render, uploaded media files may not always persist permanently, so a fallback profile image is used for a better user experience.
-- Sensitive values should always be stored in environment variables.
+- On free hosting platforms like Render, uploaded media files may not always persist permanently, so a fallback profile image is used to keep the UI stable.
+- Sensitive values should always be stored in environment variables, not hardcoded in source files.
 
 ---
 
-## 🎯 Why This Project Matters
+## 🎯 Why This Project Stands Out
 
-This project demonstrates practical backend development through a real ecommerce workflow:
+This project demonstrates real backend development through a complete ecommerce workflow:
 
-- authentication
-- product management flow
-- cart and checkout handling
+- authentication and account handling
+- product browsing and detail logic
+- cart and checkout flow
 - payment gateway integration
-- order persistence
-- review system
-- account management
-- deployment
+- order persistence and order history
+- review and rating functionality
+- production deployment and environment configuration
 
-It is a strong portfolio project for Python and Django backend roles.
+It is a strong portfolio project for Python and Django backend roles because it goes beyond CRUD and shows practical business flow handling.
 
 ---
 
