@@ -12,6 +12,7 @@ from store.models import Product
 from django.template.loader import render_to_string
 from django.utils import timezone
 from gmail_service import send_gmail_email
+import traceback
 
 
 
@@ -122,7 +123,6 @@ def place_order(request, total=0, quantity=0):
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
-            # store all the billing information inside order table
             data = Order()
             data.user = current_user
             data.first_name = form.cleaned_data['first_name']
@@ -140,7 +140,6 @@ def place_order(request, total=0, quantity=0):
             data.ip = request.META.get('REMOTE_ADDR')
             data.save()
 
-            # Generate Order Number
             yr = int(datetime.date.today().strftime('%Y'))
             dt = int(datetime.date.today().strftime('%d'))
             mt = int(datetime.date.today().strftime('%m'))
@@ -163,10 +162,15 @@ def place_order(request, total=0, quantity=0):
                 'tax': tax,
                 'grand_total': grand_total,
                 'client_id': os.getenv('PAYPAL_CLIENT_ID'),
-            }    
-            return render(request, 'orders/payments.html', context)
-        else:
-            return redirect('checkout')
+            }
+            try:
+                return render(request, 'orders/payments.html', context)
+            except Exception:
+                return HttpResponse(f"<pre>{traceback.format_exc()}</pre>")
+
+        return redirect('checkout')
+
+    return redirect('checkout')
         
 def order_complete(request):
     order_number = request.GET.get('order_number')
