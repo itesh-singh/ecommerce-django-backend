@@ -2,238 +2,199 @@
 
 # 🛒 GreatKart — Django Ecommerce Platform
 
-*A backend-focused ecommerce system built with Django, covering the full purchase lifecycle — product discovery, cart management, PayPal payment capture, and order processing.*
+<img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=24&pause=1000&color=2563EB&center=true&vCenter=true&width=700&lines=Production-ready+Django+Ecommerce+Project;Authentication%2C+Cart%2C+Checkout%2C+PayPal+Integration;PostgreSQL+Powered+and+Deployed+on+Render" alt="Typing SVG" />
 
 <br>
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![Django](https://img.shields.io/badge/Django-092E20?style=flat&logo=django&logoColor=white)
-![PayPal](https://img.shields.io/badge/PayPal-Sandbox-003087?style=flat&logo=paypal&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=flat&logo=bootstrap&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat)
-![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=flat)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+![PayPal](https://img.shields.io/badge/PayPal-Sandbox-003087?style=for-the-badge&logo=paypal&logoColor=white)
+![Render](https://img.shields.io/badge/Deploy-Render-46E3B7?style=for-the-badge&logo=render&logoColor=black)
 
 </div>
 
 ---
 
-## Highlights
+## 🚀 Live Demo
 
-- Complete ecommerce order lifecycle
+🔗 **Live Project:**  
+[https://ecommerce-django-backend-xnws.onrender.com](https://ecommerce-django-backend-xnws.onrender.com)
+
+---
+
+## 📌 Project Overview
+
+GreatKart is a full-featured Django ecommerce project built to demonstrate real backend development skills through a complete shopping workflow.
+
+This project covers:
+
+- user authentication and account management
+- product catalog and category browsing
+- product detail pages with ratings and reviews
+- cart and checkout flow
 - PayPal Sandbox payment integration
-- Email-based account activation with signed tokens
-- Session-based shopping cart with stock validation
-- Admin honeypot with IP-based login attempt logging
-- Automatic session expiry for inactive users
-- Modular multi-app Django architecture
-- Secure environment-based configuration
+- order success, order detail, and order history
+- profile management and password change
+- forgot password flow
+- PostgreSQL database integration
+- live deployment on Render
+
+The UI is kept simple and practical, while the core focus stays on backend logic, data flow, and real ecommerce functionality.
 
 ---
 
-## What Is This?
+## ✨ Features
 
-GreatKart is a full-featured ecommerce platform built with **Django**. The focus is on **backend architecture** rather than frontend design.
+### 🔐 Authentication & Account Management
+- User registration
+- User login and logout
+- Forgot password page
+- Password reset flow
+- Change password page
+- User dashboard
+- Edit profile page
+- Profile image fallback handling
 
-The project demonstrates how a real ecommerce backend handles authentication flows, cart management, payment verification, order persistence, user account management, and inventory updates.
+### 🛍️ Store & Product Features
+- Homepage with featured products
+- Store listing page
+- Category-based browsing
+- Product detail page
+- Product review and rating system
+- Color and size selection
 
-Frontend UI is intentionally simple so the **business logic and backend structure remain the focus**.
+### 🛒 Cart & Checkout
+- Add to cart
+- Update quantity
+- Remove items from cart
+- Billing address form
+- Checkout summary
+- Order review before payment
 
----
+### 💳 Payment & Orders
+- PayPal Sandbox integration
+- Payment success page
+- Order detail / invoice page
+- My Orders history page
 
-## Live Demo
-
-> Deployment coming soon — will be hosted on Render.
-
----
-
-## System Flow
-
-```
-User Request
-    │
-    ▼
-Django Views  ──►  Business Logic  ──►  Models  ──►  Database
-                        │
-                        ▼
-                   PayPal JS SDK
-                   (client-side capture)
-                        │
-                        ▼
-                   Server Verification
-                   + Order Persistence
-                        │
-                        ▼
-                   Confirmation Email
-```
-
----
-
-## Screenshots
-
-### Home
-![Homepage Top](screenshots/homepage_top.png)
-![Homepage Bottom](screenshots/homepage_bottom.png)
+### 🧠 Backend Highlights
+- Modular Django app structure
+- Environment-based configuration
+- PostgreSQL integration
+- Media fallback handling for free hosting limitations
+- Real deployed ecommerce flow
 
 ---
 
-### Store
-![Store](screenshots/store.png)
-
----
-
-### Authentication
-
-| Sign In | Sign Up | Forgot Password |
-|:---:|:---:|:---:|
-| ![Sign In](screenshots/sign_in.png) | ![Sign Up](screenshots/sign_up.png) | ![Forgot Password](screenshots/forgot_password.png) |
-
----
-
-### Checkout & Payment
-
-| Checkout | Place Order | PayPal Sandbox |
-|:---:|:---:|:---:|
-| ![Checkout](screenshots/checkout.png) | ![Place Order](screenshots/place_order.png) | ![PayPal](screenshots/paypal_sandbox_payment.png) |
-
-<div align="center">
-
-![Payment Successful](screenshots/payment_successful.png)
-
-</div>
-
----
-
-### Orders
-
-| My Orders | Order Detail | Confirmation Email |
-|:---:|:---:|:---:|
-| ![My Orders](screenshots/my_order.png) | ![Order Detail](screenshots/order_detail.png) | ![Email](screenshots/order_confirm_mail.png) |
-
----
-
-### User Dashboard
-
-| Dashboard | Edit Profile | Change Password |
-|:---:|:---:|:---:|
-| ![Dashboard](screenshots/dashboard.png) | ![Edit Profile](screenshots/edit_profile.png) | ![Change Password](screenshots/change_password.png) |
-
----
-
-### Reviews
-
-<div align="center">
-
-![Review Order](screenshots/review_order.png)
-
-</div>
-
----
-
-## Tech Stack
+## 🛠️ Tech Stack
 
 | Category | Technology |
-|:---|:---|
+|:--|:--|
 | Language | Python |
 | Framework | Django |
-| Database | SQLite (dev) → PostgreSQL (planned) |
-| Frontend | Bootstrap 5, jQuery, Vanilla JS |
-| Payments | PayPal JavaScript SDK (Sandbox) |
-| Email | Gmail SMTP — App Password |
-| Auth | Django Auth + Signed Token Email Verification |
-| Image Processing | Pillow |
-| Configuration | python-decouple, python-dotenv |
-| Version Control | Git + GitHub (Conventional Commits) |
+| Database | PostgreSQL |
+| Frontend | Django Templates, Bootstrap, jQuery, JavaScript |
+| Payment Gateway | PayPal Sandbox |
+| Image Handling | Pillow |
+| Deployment | Render |
+| Version Control | Git & GitHub |
 
 ---
 
-## Architecture
+## 📂 Project Structure
 
-```
-GreatKart/
+```text
+ecommerce-django-backend/
 │
-├── Ecommerce/        # Project configuration (settings, urls, wsgi/asgi)
-│
-├── accounts/         # Authentication, email verification, profiles
-│
-├── store/            # Products, galleries, reviews, ratings
-│
-├── carts/            # Session-based cart and quantity management
-│
+├── Ecommerce/        # Project configuration (settings, urls, wsgi, asgi)
+├── accounts/         # Authentication, profile management
+├── store/            # Products, reviews, product detail
+├── carts/            # Cart operations and quantity logic
 ├── category/         # Product categories
-│
-├── orders/           # Order creation, PayPal capture, order history
-│
-├── screenshots/      # README screenshots
+├── orders/           # Checkout, payment, order flow
 ├── templates/        # Django templates
-└── static/           # CSS, JS, images
+├── static/           # CSS, JS, images
+├── screenshots/      # README screenshots
+└── manage.py
 ```
 
-Each Django app manages its own models, views, and URLs — following the **separation of concerns** principle for maintainability and scalability.
+---
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home Top](screenshots/home_top.png)
+![Home Products](screenshots/home_products.png)
+
+### 🛍️ Store Page
+![Store](screenshots/store.png)
+
+### 📦 Product Detail Page
+![Product Detail](screenshots/product_detail.png)
+
+### ⭐ Reviews Section
+![Review Section](screenshots/review_section.png)
+
+### 🛒 Cart Page
+![Cart](screenshots/cart.png)
+
+### 🧾 Checkout Page
+![Checkout](screenshots/checkout.png)
+
+### ✅ Review Order & Payment
+![Order Review](screenshots/order_review.png)
+
+### 💰 PayPal Sandbox Payment
+![PayPal Payment](screenshots/paypal_payment.png)
+
+### 🎉 Payment Successful
+![Payment Success](screenshots/payment_success.png)
+
+### 👤 User Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### 📜 My Orders
+![My Orders](screenshots/my_orders.png)
+
+### 🧾 Order Detail / Invoice
+![Order Detail](screenshots/order_detail.png)
+
+### ✏️ Edit Profile
+![Edit Profile](screenshots/edit_profile.png)
+
+### 🔒 Change Password
+![Change Password](screenshots/change_password.png)
+
+### 🔑 Login Page
+![Login](screenshots/login.png)
+
+### 📝 Register Page
+![Register](screenshots/register.png)
+
+### ❓ Forgot Password
+![Forgot Password](screenshots/forgot_password.png)
 
 ---
 
-## Core Features
+## ⚙️ Local Setup
 
-### Authentication & Accounts
-- Email verification — accounts inactive until the link is clicked
-- Signed token-based activation links via Django's `default_token_generator`
-- Password reset + change with full validation
-- Profile management: name, phone, address, profile photo upload
-- Protected views using `@login_required`
-- Automatic session expiry via `django-session-timeout`
-
-### Store & Cart
-- Product catalog with category-based filtering
-- Product detail pages with jQuery-driven image gallery
-- Star rating display on product cards with live average aggregation
-- Cart quantity management with totals and tax calculation
-- Real-time stock validation — prevents overselling at add-to-cart and checkout
-
-### Payments & Orders
-- PayPal Sandbox integration via the official JavaScript SDK
-- Payment captured client-side, verified and persisted server-side
-- Unique order number generation per order
-- Order confirmation email dispatched after payment
-- Order history and detail pages
-- Automatic stock reduction after successful purchase
-- Order statuses: `New` → `Accepted` → `Completed` / `Cancelled`
-
-### Reviews & Ratings
-- Star ratings from 0.5 to 5 with live average aggregation
-- Reviews restricted to verified purchasers only
-- Anonymous user access handled gracefully
-
-### Security & Admin
-- Admin honeypot at `/admin/` — captures unauthorized login attempts with IP logging
-- Real admin panel moved off the default URL
-- All credentials in `.env`, excluded via `.gitignore`
-- CSRF middleware enabled globally
-- PayPal keys loaded from environment, never hardcoded
-
----
-
-## Local Setup
-
-### Requirements
-- Python 3.12+
-- pip
-- Git
-
-### 1. Clone the repo
+### 1. Clone the repository
 ```bash
 git clone https://github.com/itesh-singh/ecommerce-django-backend.git
 cd ecommerce-django-backend
 ```
 
-### 2. Create virtual environment
+### 2. Create and activate a virtual environment
 ```bash
 python -m venv .venv
+source .venv/bin/activate
 ```
 
-Activate:
+For Windows:
 ```bash
-source .venv/bin/activate    # Linux / macOS
-.venv\Scripts\activate       # Windows
+.venv\Scripts\activate
 ```
 
 ### 3. Install dependencies
@@ -242,98 +203,80 @@ pip install -r requirements.txt
 ```
 
 ### 4. Configure environment variables
+Create a `.env` file and add your required environment variables.
 
-Create a `.env` file in the project root:
+Example:
 ```env
-DJANGO_SECRET_KEY=your_secret_key_here
+SECRET_KEY=your_secret_key
 DEBUG=True
+ALLOWED_HOSTS=127.0.0.1,localhost
 
-EMAIL_HOST_USER=your_email@gmail.com
-EMAIL_HOST_PASSWORD=your_gmail_app_password
-
-PAYPAL_CLIENT_ID=your_paypal_sandbox_client_id
-PAYPAL_RECEIVER_EMAIL=your_sandbox_business_email
+DB_NAME=your_db_name
+DB_USER=your_db_user
+DB_PASSWORD=your_db_password
+DB_HOST=localhost
+DB_PORT=5432
 ```
 
-> **Gmail App Password:** Google Account → Security → 2-Step Verification → App Passwords.
->
-> **PayPal Sandbox:** Create a developer account at [developer.paypal.com](https://developer.paypal.com).
-
-### 5. Run migrations
+### 5. Apply migrations
 ```bash
 python manage.py migrate
 ```
 
-### 6. Create superuser
+### 6. Create a superuser
 ```bash
 python manage.py createsuperuser
 ```
 
-### 7. Start development server
+### 7. Run the development server
 ```bash
 python manage.py runserver
 ```
 
-Open [http://127.0.0.1:8000](http://127.0.0.1:8000)
-
----
-
-## Security Practices
-
-| Practice | Implementation |
-|:---|:---|
-| Secret management | All credentials in `.env`, excluded via `.gitignore` |
-| Email verification | Accounts inactive until activation link is clicked |
-| Activation links | Django signed token — time-limited and one-use |
-| CSRF protection | Django CSRF middleware enabled globally |
-| Payment credentials | PayPal keys loaded from environment, never hardcoded |
-| Admin protection | Honeypot with IP-based login attempt logging |
-| Session security | Automatic session expiry |
-
----
-
-## Roadmap
-
-- [ ] Migrate database to PostgreSQL
-- [ ] Deploy to Render
-- [ ] Expose REST API using Django REST Framework
-- [ ] Add JWT-based API authentication
-- [ ] Write unit tests for order and payment flows
-- [ ] Add CI/CD pipeline with GitHub Actions
-- [ ] Containerize with Docker + docker-compose
-
----
-
-## Commit Convention
-
-This project follows [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/):
-
-```
-feat(orders): add stock reduction after payment capture
-fix(cart): prevent quantity exceeding available stock
-refactor(accounts): simplify activation token logic
-feat(security): add admin honeypot with login attempt monitoring
+Open in browser:
+```text
+http://127.0.0.1:8000/
 ```
 
 ---
 
-## Author
+## 🔐 Notes
 
-<div align="center">
-
-**Itesh Singh**
-<br>
-Backend Developer · Python & Django · Roorkee, Uttrakhand, India
-<br><br>
-
-[![GitHub](https://img.shields.io/badge/GitHub-itesh--singh-181717?style=flat&logo=github)](https://github.com/itesh-singh)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Itesh%20Singh-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/itesh-singh-113b55323)
-[![Email](https://img.shields.io/badge/Email-itesh5906@gmail.com-D14836?style=flat&logo=gmail&logoColor=white)](mailto:itesh5906@gmail.com)
-
-</div>
+- This project uses **PayPal Sandbox** for payment testing.
+- The project is configured with **PostgreSQL**.
+- On free hosting platforms like Render, uploaded media files may not always persist permanently, so a fallback profile image is used for a better user experience.
+- Sensitive values should always be stored in environment variables.
 
 ---
 
-## License
+## 🎯 Why This Project Matters
 
-This project is open source under the [MIT License](LICENSE).
+This project demonstrates practical backend development through a real ecommerce workflow:
+
+- authentication
+- product management flow
+- cart and checkout handling
+- payment gateway integration
+- order persistence
+- review system
+- account management
+- deployment
+
+It is a strong portfolio project for Python and Django backend roles.
+
+---
+
+## 👨‍💻 Author
+
+**Itesh Singh**  
+Backend Developer focused on Python and Django
+
+- GitHub: [https://github.com/itesh-singh](https://github.com/itesh-singh)
+- LinkedIn: [https://www.linkedin.com/in/itesh-singh-113b55323](https://www.linkedin.com/in/itesh-singh-113b55323)
+- Email: itesh5906@gmail.com
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
