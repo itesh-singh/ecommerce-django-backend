@@ -5,11 +5,11 @@
 <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=24&pause=1000&color=2563EB&center=true&vCenter=true&width=900&lines=Production-Oriented+Django+Ecommerce+Project;Authentication%2C+Cart%2C+Checkout%2C+PayPal+Integration;PostgreSQL+Powered+and+Deployed+on+Render" alt="Typing SVG" />
 
 <p>
-  <strong>A backend-focused ecommerce project built with Django, PostgreSQL, PayPal Sandbox, and Render deployment.</strong>
+  <strong>A backend-focused ecommerce project built with Django, PostgreSQL, PayPal Sandbox, Gmail API, and Render deployment.</strong>
 </p>
 
 <p>
-  This project demonstrates a complete ecommerce workflow including authentication, product browsing, cart and checkout, payment handling, order history, profile management, reviews, and production-style deployment.
+  This project demonstrates a complete ecommerce workflow including authentication, product browsing, cart and checkout, payment handling, order history, profile management, reviews, account email flows, and production-style deployment.
 </p>
 
 <br>
@@ -39,6 +39,7 @@ GreatKart is a production-oriented Django ecommerce application built to demonst
 It covers the full customer journey:
 
 - user registration and login
+- email-based account verification
 - forgot password and password reset flow
 - product browsing and category filtering
 - product detail pages with reviews and ratings
@@ -49,7 +50,7 @@ It covers the full customer journey:
 - profile editing and password management
 - live deployment on Render with PostgreSQL
 
-The frontend is intentionally simple and usable, while the main focus remains on backend flow, business logic, and production-style project structure.
+The frontend is intentionally simple and usable, while the main focus remains on backend flow, business logic, integrations, and production-style project structure.
 
 ---
 
@@ -58,12 +59,14 @@ The frontend is intentionally simple and usable, while the main focus remains on
 ### 🔐 Authentication & Account Management
 - User registration
 - User login and logout
+- Email verification flow
 - Forgot password flow
 - Password reset support
 - Change password page
 - User dashboard
 - Edit profile page
 - Profile image fallback handling
+- Email delivery powered by **Gmail API + OAuth 2.0**
 
 ### 🛍️ Store & Product Experience
 - Homepage with featured products
@@ -92,6 +95,7 @@ The frontend is intentionally simple and usable, while the main focus remains on
 - Modular Django app structure
 - PostgreSQL-backed data storage
 - Environment-based configuration
+- Gmail API integration for account emails
 - Admin honeypot protection
 - Media fallback handling for free-hosting limitations
 - Render deployment workflow
@@ -107,6 +111,7 @@ The frontend is intentionally simple and usable, while the main focus remains on
 | Database | PostgreSQL |
 | Frontend | Django Templates, Bootstrap, jQuery, JavaScript |
 | Payment Gateway | PayPal Sandbox |
+| Email | Gmail API, OAuth 2.0 |
 | Image Handling | Pillow |
 | Deployment | Render |
 | Version Control | Git & GitHub |
@@ -119,7 +124,7 @@ The frontend is intentionally simple and usable, while the main focus remains on
 ecommerce-django-backend/
 │
 ├── Ecommerce/        # Project configuration (settings, urls, wsgi, asgi)
-├── accounts/         # Authentication, profile management
+├── accounts/         # Authentication, profile management, email verification
 ├── store/            # Products, reviews, product detail
 ├── carts/            # Cart operations and quantity logic
 ├── category/         # Product categories
@@ -261,6 +266,7 @@ http://127.0.0.1:8000/
 
 - This project uses **PayPal Sandbox** for payment testing.
 - The project is configured with **PostgreSQL**.
+- Account emails such as verification and password reset are sent using **Gmail API + OAuth 2.0**, not basic SMTP username-password login.
 - On free hosting platforms like Render, uploaded media files may not always persist permanently, so a fallback profile image is used to keep the UI stable.
 - Sensitive values should always be stored in environment variables, not hardcoded in source files.
 
@@ -271,6 +277,7 @@ http://127.0.0.1:8000/
 This project demonstrates real backend development through a complete ecommerce workflow:
 
 - authentication and account handling
+- email verification and password reset flow
 - product browsing and detail logic
 - cart and checkout flow
 - payment gateway integration
