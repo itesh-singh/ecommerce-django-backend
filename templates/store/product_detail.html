@@ -60,32 +60,35 @@
               <p>{{ single_product.description }}</p>
 
               <hr />
+              {% with colors=single_product.variation_set.colors sizes=single_product.variation_set.sizes %}
+              {% if colors %}
               <div class="row">
                 <div class="item-option-select">
                   <h6>Choose Color</h6>
                   <select name="color" class="form-control" required>
                     <option value="" disabled selected>Select</option>
-                    {% for i in single_product.variation_set.colors %}
-                    <option value="{{ i.variation_value | lower }}">
-                      {{ i.variation_value | capfirst }}
-                    </option>
+                    {% for i in colors %}
+                    <option value="{{ i.variation_value|lower }}">{{ i.variation_value|capfirst }}</option>
                     {% endfor %}
                   </select>
                 </div>
               </div>
+              {% endif %}
+
+              {% if sizes %}
               <div class="row">
                 <div class="item-option-select">
                   <h6>Select Size</h6>
-                  <select name="size" class="form-control">
+                  <select name="size" class="form-control" required>
                     <option value="" disabled selected>Select</option>
-                    {% for i in single_product.variation_set.sizes %}
-                    <option value="{{ i.variation_value | lower }}">
-                      {{ i.variation_value | capfirst }}
-                    </option>
+                    {% for i in sizes %}
+                    <option value="{{ i.variation_value|lower }}">{{ i.variation_value|capfirst }}</option>
                     {% endfor %}
                   </select>
                 </div>
               </div>
+              {% endif %}
+            {% endwith %}
               <hr />
               {% if single_product.stock <= 0 %}
               <h5 class="text-danger">Out of Stock</h5>
