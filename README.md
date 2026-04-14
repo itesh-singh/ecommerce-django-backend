@@ -30,6 +30,11 @@
 **Live Project:**  
 [https://ecommerce-django-backend-xnws.onrender.com](https://ecommerce-django-backend-xnws.onrender.com)
 
+**Demo Login Credentials:**  
+- **Email:** povodon873@sskaid.com  
+- **Password:** itesh1234
+
+> Use this demo account to explore the authenticated ecommerce workflow, including dashboard, cart, checkout, orders, and reviews.
 ---
 
 ## 📌 Project Overview
